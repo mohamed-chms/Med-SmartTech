@@ -1,0 +1,300 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Med SmartTech</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f6f9;
+      color: #333;
+    }
+    header {
+      background-color: #1a1a1a;
+      color: white;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .logo .blue {
+      color: #00bfff;
+    }
+    .search {
+      padding: 8px 12px;
+      border-radius: 20px;
+      border: 1px solid #ccc;
+      width: 250px;
+    }
+    #theme-toggle {
+      background: transparent;
+      border: 1px solid #ccc;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background 0.3s, color 0.3s;
+      margin-left: 10px;
+    }
+    #theme-toggle:hover {
+      background: #333;
+    }
+    .container {
+      display: flex;
+      margin-top: 1rem;
+    }
+    aside {
+      width: 220px;
+      background: #fff;
+      padding: 1rem;
+      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05);
+    }
+    .categories li {
+      padding: 10px;
+      border-bottom: 1px solid #eee;
+      cursor: pointer;
+      transition: background 0.3s;
+      list-style: none;
+    }
+    .categories li:hover {
+      background-color: #f0f0f0;
+      color: #007bff;
+    }
+    main {
+      flex: 1;
+      padding: 1rem;
+    }
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+    .product-card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.07);
+      padding: 16px;
+      transition: transform 0.2s;
+    }
+    .product-card:hover {
+      transform: translateY(-5px);
+    }
+    .product-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: contain;
+      margin-bottom: 10px;
+    }
+    .product-card h2 {
+      font-size: 18px;
+      color: #333;
+    }
+    .product-card p {
+      font-size: 14px;
+      color: #666;
+    }
+    .product-card strong {
+      display: block;
+      margin: 10px 0;
+      color: #007bff;
+    }
+    .product-card button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .product-card button:hover {
+      background-color: #0056b3;
+    }
+    .order-form {
+      margin-top: 10px;
+      background: #f9f9f9;
+      padding: 10px;
+      border-radius: 8px;
+      display: none;
+    }
+    .order-form input {
+      width: 100%;
+      margin: 5px 0;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .order-form button {
+      background-color: #28a745;
+      color: white;
+      margin-top: 5px;
+      border: none;
+      padding: 8px;
+      border-radius: 5px;
+    }
+    .order-form button:hover {
+      background-color: #218838;
+    }
+
+    /* الوضع الداكن */
+    body.dark-mode {
+      background-color: #181818;
+      color: #eee;
+    }
+    body.dark-mode header {
+      background-color: #000;
+      color: white;
+    }
+    body.dark-mode aside {
+      background-color: #1e1e1e;
+    }
+    body.dark-mode .product-card {
+      background-color: #2a2a2a;
+      color: #ddd;
+    }
+    body.dark-mode .product-card strong {
+      color: #4db8ff;
+    }
+    body.dark-mode .order-form {
+      background-color: #333;
+    }
+    body.dark-mode #theme-toggle {
+      color: #ddd;
+      border-color: #555;
+    }
+  
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .search {
+        width: 100%;
+        margin-top: 10px;
+      }
+      .container {
+        flex-direction: column;
+      }
+      aside {
+        width: 100%;
+        order: 2;
+        box-shadow: none;
+        background: #f8f8f8;
+      }
+      main {
+        order: 1;
+      }
+      .product-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">⚙️ <span class="blue">Med</span> SmartTech</div>
+    <div>
+      <input type="text" placeholder="Recherche..." class="search">
+      <button id="theme-toggle">🌙 Mode Sombre</button>
+    </div>
+  </header>
+
+  <div class="container">
+    <aside>
+      <ul class="categories">
+        <li>Ordinateur Portable</li>
+        <li>Imprimantes</li>
+        <li>Accessoires</li>
+        <li>Caméras de surveillance</li>
+        <li>Réseaux & Wifi</li>
+        <li>Stockage</li>
+        <li>Électricité & Sécurité</li>
+      </ul>
+    </aside>
+
+    <main>
+      <h1>Nos Produits</h1>
+      <div class="product-grid">
+        <div class="product-card">
+          <img src="laptop1.jpg" alt="HP i5">
+          <h2>HP i5 11e Gén</h2>
+          <p>8Go RAM - SSD 512Go</p>
+          <strong>85.000 DA</strong>
+          <button onclick="commander(this)">Commander</button>
+          <form class="order-form">
+            <input type="text" placeholder="Nom complet">
+            <input type="tel" placeholder="Téléphone">
+            <input type="text" placeholder="Adresse">
+            <button type="submit">Envoyer</button>
+          </form>
+        
+<div class="product-card">
+  <img src="laptop2.jpg" alt="DELL i7">
+  <h2>DELL i7 10e Gén</h2>
+  <p>16Go RAM - SSD 1To</p>
+  <strong>129.000 DA</strong>
+  <button onclick="commander(this)">Commander</button>
+  <form class="order-form">
+    <input type="text" placeholder="Nom complet">
+    <input type="tel" placeholder="Téléphone">
+    <input type="text" placeholder="Adresse">
+    <button type="submit">Envoyer</button>
+  </form>
+</div>
+
+<div class="product-card">
+  <img src="printer.jpg" alt="Imprimante HP">
+  <h2>Imprimante HP LaserJet</h2>
+  <p>WiFi - 20 ppm</p>
+  <strong>42.000 DA</strong>
+  <button onclick="commander(this)">Commander</button>
+  <form class="order-form">
+    <input type="text" placeholder="Nom complet">
+    <input type="tel" placeholder="Téléphone">
+    <input type="text" placeholder="Adresse">
+    <button type="submit">Envoyer</button>
+  </form>
+</div>
+
+<div class="product-card">
+  <img src="camera.jpg" alt="Caméra Hikvision">
+  <h2>Caméra Hikvision HD</h2>
+  <p>Extérieure - Vision Nocturne</p>
+  <strong>8.500 DA</strong>
+  <button onclick="commander(this)">Commander</button>
+  <form class="order-form">
+    <input type="text" placeholder="Nom complet">
+    <input type="tel" placeholder="Téléphone">
+    <input type="text" placeholder="Adresse">
+    <button type="submit">Envoyer</button>
+  </form>
+</div>
+
+      </div>
+    </main>
+  </div>
+
+  <script>
+    function commander(btn) {
+      const form = btn.nextElementSibling;
+      form.style.display = form.style.display === 'block' ? 'none' : 'block';
+    }
+
+    const toggleBtn = document.getElementById('theme-toggle');
+    toggleBtn.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      toggleBtn.textContent = document.body.classList.contains('dark-mode') 
+        ? '☀️ Mode Clair' 
+        : '🌙 Mode Sombre';
+    });
+  </script>
+</body>
+</html>
